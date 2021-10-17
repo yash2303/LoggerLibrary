@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import com.yashasvi.logger.AbstractLogger;
 import com.yashasvi.logger.DBLogger;
@@ -14,6 +16,7 @@ import com.yashasvi.model.Target;
 
 public class LoggerLibrary {
     private Map<LogLevel, AbstractLogger> loggers;
+    private ExecutorService threadPool = Executors.newCachedThreadPool();
 
     public LoggerLibrary(final String applicationName, final List<LogConfig> logConfigs) throws Exception {
         this.loggers = new HashMap<>();
@@ -34,5 +37,15 @@ public class LoggerLibrary {
     public void log(final LogLevel logLevel, final String message) throws IOException {
         AbstractLogger logger = loggers.get(logLevel);
         logger.log(message);
+    }
+
+    public void logAsync(final LogLevel logLevel, final String message) throws IOException {
+        threadPool.submit(() -> {
+            try {
+                log(logLevel, message);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
     }
 }

@@ -1,6 +1,5 @@
 package com.yashasvi;
 
-import java.io.IOException;
 import java.util.List;
 
 import com.yashasvi.controller.LoggerLibrary;
@@ -18,10 +17,10 @@ public class Main {
         );
         try {
             loggerLibrary = new LoggerLibrary("DummyApplication", logConfigs);
-            loggerLibrary.log(LogLevel.INFO, "Hello World Info message");
-            loggerLibrary.log(LogLevel.DEBUG, "Hello World Debug message");
-            loggerLibrary.log(LogLevel.INFO, "Hello World Info message 1");
-            loggerLibrary.log(LogLevel.DEBUG, "Hello World Debug message 1");
+            loggerLibrary.logAsync(LogLevel.INFO, "Hello World Info message");
+            loggerLibrary.logAsync(LogLevel.DEBUG, "Hello World Debug message");
+            loggerLibrary.logAsync(LogLevel.INFO, "Hello World Info message 1");
+            loggerLibrary.logAsync(LogLevel.DEBUG, "Hello World Debug message 1");
         } catch (Exception e) {
             e.printStackTrace();
         }

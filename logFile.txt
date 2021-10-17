@@ -1,2 +1,2 @@
-DummyApplication::DEBUG::17-10-21::Hello World Debug message
 DummyApplication::DEBUG::17-10-21::Hello World Debug message 1
+DummyApplication::DEBUG::17-10-21::Hello World Debug message

@@ -1,13 +1,13 @@
 package com.yashasvi.model;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedDeque;
 
 public class DBLogs {
-    private List<String> logs;
+    private Queue<String> logs;
 
     public DBLogs() {
-        this.logs = new ArrayList<>();
+        this.logs = new ConcurrentLinkedDeque<>();
     }
 
     public void append(final String log) {
